@@ -11,6 +11,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Index from '@/components/Index'
 import Reader from '@/components/Reader'
 import Manager from '@/components/Manager'
+import Register from '@/components/Register'
 
 Vue.use(Router)
 Vue.use(VueResource)
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/manager',
       component: Manager
+    },
+    {
+      path: '/register',
+      component: Register
     }
   ]
 })

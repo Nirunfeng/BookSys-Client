@@ -10,7 +10,7 @@
         <Button type="primary" @click="handleSubmit('formInline')">查找</Button>
       </FormItem>
       <FormItem>
-        <Button type="primary" @click="modal1 = true">新添用户</Button>
+        <Button type="primary" @click="modal1 = true">修改用户权限</Button>
       </FormItem>
     </Form>
     <Table border :columns="columns7" :data="data6"></Table>
@@ -18,14 +18,14 @@
 
     <Modal
       v-model="modal1"
-      title="新添用户"
+      title="权限修改"
       @on-ok="ok('formItem2')"
       >
       <Form ref="formItem2" :model="formItem2" :rules="ruleItem2" :label-width="80">
-        <FormItem label="学号" prop="account">
+        <FormItem label="账户" prop="account">
           <Input v-model="formItem2.account" placeholder=""></Input>
         </FormItem>
-        <FormItem label="姓名" prop="name">
+        <!-- <FormItem label="姓名" prop="name">
           <Input v-model="formItem2.name" placeholder=""></Input>
         </FormItem>
         <FormItem label="性别" prop="sex">
@@ -33,7 +33,7 @@
             <Radio label="男">男</Radio>
             <Radio label="女">女</Radio>
           </RadioGroup>
-        </FormItem>
+        </FormItem> -->
         <FormItem label="身份" prop="condi">
           <Select v-model="formItem2.condi">
             <Option value="0">学生</Option>
@@ -166,7 +166,7 @@
       },
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllReaders',
+        this.$http.post(that.GLOBAL.serverPath + '/user/getAllReaders',
           {
             account: that.formInline.account,
             currentPage: currentPage
@@ -189,11 +189,9 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/excise/addReader',
+            that.$http.post(that.GLOBAL.serverPath + '/user/updateRole',
               {
                 account: that.formItem2.account,
-                name: that.formItem2.name,
-                sex: that.formItem2.sex,
                 condi: that.formItem2.condi,
               },
               {
@@ -202,11 +200,11 @@
             ).then(function (res) {
               console.log(res.data.status)
               if(res.data.status=='ok'){
-                that.$Message.success('新增成功')
+                that.$Message.success('修改成功')
                 that.formInline.account=''
                 that.request(1)
               }else{
-                that.$Message.error('已存在该学号的用户')
+                that.$Message.error('不存在的用户')
               }
 
             }).catch((e) => {
