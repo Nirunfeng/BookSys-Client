@@ -33,25 +33,21 @@
       </Col>
       <Col span="19">
       <div class="layout-header"></div>
-      <!-- 主页/后台管理/用户管理 -->
       <div class="layout-breadcrumb">
         <Breadcrumb>
           <BreadcrumbItem href="#">{{one_nav}}</BreadcrumbItem>
           <BreadcrumbItem href="#">{{two_nav}}</BreadcrumbItem>
           <BreadcrumbItem>{{three_nav}}</BreadcrumbItem>
-          <!-- 退出模块 -->
-          <router-link :to="{path:'/'}"><input id="exitbtn" type="button" value="退出"></router-link>
         </Breadcrumb>
       </div>
       <div class="layout-content">
-        <!--用户模块-->
         <div class="layout-content-main">
           <template id="userManage"></template>
           <component :is="currentView"></component>
         </div>
       </div>
       <div class="layout-copy">
-        2021 &copy; 图书馆管理
+        2017-2018 &copy; 图书馆管理
       </div>
       </Col>
     </Row>
@@ -129,10 +125,5 @@
   }
   Button{
     color:white;
-  }
-
-  #exitbtn{
-    position: absolute;
-    right: 2%;
   }
 </style>

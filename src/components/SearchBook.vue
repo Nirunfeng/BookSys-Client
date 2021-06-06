@@ -163,7 +163,7 @@
       borrow (index) {
         //this.data6.splice(index, 1);
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/book/borrow',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/borrow',
           {
             aid: that.data6[index].aid,
             rid: window.localStorage.getItem('userId'),
@@ -186,7 +186,7 @@
       },
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/book/getAllAlbums',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllAlbums',
           {
             title: that.formInline.title,
             currentPage: currentPage

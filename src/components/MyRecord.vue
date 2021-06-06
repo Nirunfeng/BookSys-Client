@@ -71,7 +71,7 @@
     methods: {
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/borrowrecord/getAllBorrowRecords',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllBorrowRecords',
           {
             raccount: window.localStorage.getItem('account'),
             currentPage: currentPage

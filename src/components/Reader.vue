@@ -39,8 +39,6 @@
           <BreadcrumbItem href="#">{{one_nav}}</BreadcrumbItem>
           <BreadcrumbItem href="#">{{two_nav}}</BreadcrumbItem>
           <BreadcrumbItem>{{three_nav}}</BreadcrumbItem>
-          <!-- 退出模块 -->
-          <router-link :to="{path:'/'}"><input id="exitbtn" type="button" value="退出"></router-link>
         </Breadcrumb>
       </div>
       <div class="layout-content">
@@ -139,10 +137,5 @@
   }
   Button{
     color:white;
-  }
-
-  #exitbtn{
-    position: absolute;
-    right: 2%;
   }
 </style>

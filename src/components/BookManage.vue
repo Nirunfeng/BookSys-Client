@@ -225,9 +225,7 @@
       },
       request (currentPage){
         var that=this
-        //vue的原生请求方式vue-resource封装的异步传输
-        //axios的兼容性优于vue-resource，适用于vue、react等框架
-        this.$http.post(that.GLOBAL.serverPath + '/book/getAllAlbums',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllAlbums',
           {
             title: that.formInline.title,
             currentPage: currentPage
@@ -270,7 +268,7 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/book/addAlbum',
+            that.$http.post(that.GLOBAL.serverPath + '/excise/addAlbum',
               {
                 title: that.formItem2.title,
                 author: that.formItem2.author,
@@ -310,7 +308,7 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/book/addSubAlbum',
+            that.$http.post(that.GLOBAL.serverPath + '/excise/addSubAlbum',
               {
                 aid: that.currIndex,
                 number: that.formItem3.num

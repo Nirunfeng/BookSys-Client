@@ -36,18 +36,11 @@
           <span v-if="!loading">登录</span>
           <span v-else>登录中...</span>
         </Button>
-        <br/>
-        <br/>
-        <router-link :to="{path: '/register'}">
-          <Button id="register_btn" shape="circle" type="primary">
-            <span>注册</span>
-          </Button>
-        </router-link>
         </Col>
       </Row>
       <Row class="tip">
         <Col :xs="10" :sm="10" :md="10" :lg="10" offset="12">
-          <span class="login_font">忘记密码？点击邮箱找回</span>
+          <!--<span class="login_font">忘记密码？点击邮箱找回</span>-->
         </Col>
       </Row>
     </Form>
@@ -101,7 +94,7 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           if (that.verifyCode === that.formItem.code) {
-            that.$http.post(that.GLOBAL.serverPath + '/user/login',
+            that.$http.post(that.GLOBAL.serverPath + '/excise/login',
               {
                 account: that.formItem.account,
                 password: that.formItem.password
@@ -172,9 +165,6 @@ export default {
     /*background-color:red;*/
   }
   #login_btn{
-    width:70%;
-  }
-  #register_btn{
     width:70%;
   }
   .tip{

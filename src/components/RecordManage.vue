@@ -126,7 +126,7 @@
       reback (index) {
         //this.data6.splice(index, 1);
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/borrowrecord/reback',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/reback',
           {
             bid: that.data6[index].bid,
             sid: that.data6[index].sid
@@ -145,7 +145,7 @@
       },
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/borrowrecord/getAllBorrowRecords',
+        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllBorrowRecords',
           {
             raccount: that.formInline.raccount,
             currentPage: currentPage
