@@ -5,7 +5,7 @@
 ## 项目说明
 
 此项目为图书管理系统前台，使用vue.js,vue-resource,vue-router,iView2.0UI框架,vue-quill-editor等技术实现前台页面，
-后台采用的是springboot+mybatis等技术实现数据持久化以及api服务调用，后台地址：[BookSys-Client](https://github.com/Nirunfeng/BookSys-Server)
+后台采用的是springboot+mybatis等技术实现数据持久化以及api服务调用，后台地址：[BookSys-Server](https://github.com/Nirunfeng/BookSys-Server)
 
 
 ## 项目启动
