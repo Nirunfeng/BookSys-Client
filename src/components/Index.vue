@@ -38,6 +38,7 @@
           <BreadcrumbItem href="#">{{one_nav}}</BreadcrumbItem>
           <BreadcrumbItem href="#">{{two_nav}}</BreadcrumbItem>
           <BreadcrumbItem>{{three_nav}}</BreadcrumbItem>
+          <button id="logout" @click="logout()">退出</button>
         </Breadcrumb>
       </div>
       <div class="layout-content">
@@ -47,7 +48,7 @@
         </div>
       </div>
       <div class="layout-copy">
-        2017-2018 &copy; 图书馆管理
+        2021-2022 &copy; 图书馆管理
       </div>
       </Col>
     </Row>
@@ -74,6 +75,9 @@
         this.two_nav = '后台管理'
         this.three_nav = '用户管理'
         this.currentView = 'userManage'
+      },
+      logout () {
+        this.$router.replace('/')
       }
     },
     components: {
@@ -125,5 +129,14 @@
   }
   Button{
     color:white;
+  }
+  
+  /* 退出按钮 */
+  #logout{
+    position: absolute;
+    right:5%;
+    background-color:grey;
+    width: 50px;
+    border-radius: 10%;
   }
 </style>

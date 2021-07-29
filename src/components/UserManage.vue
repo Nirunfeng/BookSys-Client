@@ -166,7 +166,7 @@
       },
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllReaders',
+        this.$http.post(that.GLOBAL.serverPath + '/user/getAllReaders',
           {
             account: that.formInline.account,
             currentPage: currentPage
@@ -189,7 +189,8 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/excise/addReader',
+            // 缺少权限修改的后端
+            that.$http.post(that.GLOBAL.serverPath + '/user/addReader',
               {
                 account: that.formItem2.account,
                 name: that.formItem2.name,

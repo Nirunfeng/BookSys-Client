@@ -8,26 +8,38 @@
       </Row>
       <Row>
         <Col :xs="23" :sm="23" :md="23" :lg="23">
-        <FormItem prop="account" label="账号">
-          <Input type="text" v-model="formItem.account" placeholder="你的注册邮箱"></Input>
+        <FormItem prop="account" label="注册账号">
+          <Input type="text" v-model="formItem.account" placeholder="填写注册邮箱"></Input>
         </FormItem>
         </Col>
       </Row>
       <Row>
         <Col :xs="23" :sm="23" :md="23" :lg="23">
-        <FormItem prop="password" label="密码">
-          <Input type="password" v-model="formItem.password" placeholder="你的密码"></Input>
+        <FormItem prop="name" label="姓名">
+          <Input type="text" v-model="formItem.name" placeholder="输入姓名"></Input>
         </FormItem>
         </Col>
       </Row>
       <Row>
-        <Col :xs="16" :sm="16" :md="16" :lg="16">
-          <FormItem prop="code" label="验证码">
-             <Input type="text" v-model="formItem.code" placeholder="请输入验证码"></Input>
-          </FormItem>
+        <Col :xs="23" :sm="23" :md="23" :lg="23">
+        <FormItem prop="sex" label="性别">
+            <input type="radio" value="男" v-model="sex"><label>男</label>
+            <input type="radio" value="女" v-model="sex"><label>女</label>
+        </FormItem>
         </Col>
-        <Col :xs="8" :sm="8" :md="8" :lg="8">
-          <h2 id="verifyCode" @click="createCode()">{{verifyCode}}</h2>
+      </Row>
+      <Row>
+        <Col :xs="23" :sm="23" :md="23" :lg="23">
+        <FormItem prop="password" label="注册密码">
+          <Input type="password" v-model="formItem.password" placeholder="填写密码"></Input>
+        </FormItem>
+        </Col>
+      </Row>
+      <Row>
+        <Col :xs="23" :sm="23" :md="23" :lg="23">
+        <FormItem prop="conf_password" label="确认密码">
+          <Input type="password" v-model="formItem.conf_password" placeholder="重复密码"></Input>
+        </FormItem>
         </Col>
       </Row>
       <Row>
@@ -58,17 +70,24 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
+      sex: '男',
       msg: '图书馆',
       verifyCode: 'hello',
       formItem: {
         account: '',
         password: '',
-        code: ''
+        sex: '男',
+        name: ''
       },
       ruleItem: {
         account: [{
           required: true,
           message: '请填写账号！',
+          trigger: 'blur'
+        }],
+        name: [{
+          required: true,
+          message: '请输入姓名！',
           trigger: 'blur'
         }],
         password: [{
@@ -81,17 +100,18 @@ export default {
           message: '密码长度不能小于6位',
           trigger: 'blur'
         }],
-        code: [{
+        conf_password: [{
           required: true,
-          message: '请填写验证码',
+          message: '请填写密码',
+          trigger: 'blur'
+        }, {
+          type: 'string',
+          min: 3,
+          message: '密码长度不能小于6位',
           trigger: 'blur'
         }]
-      },
-      loading: false
+      }
     }
-  },
-  mounted () {
-    this.createCode()
   },
   methods: {
     handleSubmit (name) {
@@ -100,7 +120,7 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           if (that.verifyCode === that.formItem.code) {
-            that.$http.post(that.GLOBAL.serverPath + '/user/login',
+            that.$http.post(that.GLOBAL.serverPath + '/excise/login',
               {
                 account: that.formItem.account,
                 password: that.formItem.password
@@ -138,20 +158,6 @@ export default {
           this.loading = false
         }
       })
-    },
-    createCode () {
-      var code = ''
-      var codeLength = 4
-      var random = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-      for (var i = 0; i < codeLength; i++) {
-        var index = Math.floor(Math.random() * 36)
-        code += random[index]
-      }
-      console.log(code)
-      this.verifyCode = code
-    },
-    register () {
-      this.$router.replace('/register')
     }
   }
 }

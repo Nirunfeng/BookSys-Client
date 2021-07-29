@@ -39,6 +39,7 @@
           <BreadcrumbItem href="#">{{one_nav}}</BreadcrumbItem>
           <BreadcrumbItem href="#">{{two_nav}}</BreadcrumbItem>
           <BreadcrumbItem>{{three_nav}}</BreadcrumbItem>
+          <button id="logout" @click="logout()">退出</button>
         </Breadcrumb>
       </div>
       <div class="layout-content">
@@ -85,6 +86,9 @@
         this.two_nav = '>'
         this.three_nav = '借阅记录'
         this.currentView = 'myRecord'
+      },
+      logout () {
+        this.$router.replace('/')
       }
     },
     components: {
@@ -137,5 +141,13 @@
   }
   Button{
     color:white;
+  }
+  /* 退出按钮 */
+  #logout{
+    position: absolute;
+    right:5%;
+    background-color:grey;
+    width: 50px;
+    border-radius: 10%;
   }
 </style>

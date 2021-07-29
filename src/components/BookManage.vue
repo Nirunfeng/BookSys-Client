@@ -225,7 +225,7 @@
       },
       request (currentPage){
         var that=this
-        this.$http.post(that.GLOBAL.serverPath + '/excise/getAllAlbums',
+        this.$http.post(that.GLOBAL.serverPath + '/book/getAllAlbums',
           {
             title: that.formInline.title,
             currentPage: currentPage
@@ -268,7 +268,7 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/excise/addAlbum',
+            that.$http.post(that.GLOBAL.serverPath + '/book/addAlbum',
               {
                 title: that.formItem2.title,
                 author: that.formItem2.author,
@@ -308,7 +308,7 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            that.$http.post(that.GLOBAL.serverPath + '/excise/addSubAlbum',
+            that.$http.post(that.GLOBAL.serverPath + '/book/addSubAlbum',
               {
                 aid: that.currIndex,
                 number: that.formItem3.num
