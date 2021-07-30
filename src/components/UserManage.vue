@@ -189,7 +189,6 @@
         var that=this
         this.$refs[name].validate((valid) => {
           if (valid) {
-            // 缺少权限修改的后端
             that.$http.post(that.GLOBAL.serverPath + '/user/addReader',
               {
                 account: that.formItem2.account,
